@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/chimanyans/node-test/issues"
   },
-  "homepage": "https://github.com/chimanyans/node-test#readme"
+  "homepage": "https://github.com/chimanyans/node-test#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
 }

@@ -1,14 +1,17 @@
-const http = require('http');
-
-const hostname = '127.0.0.1';
+const server = require('http');
+const hostname = '0.0.0.0';
 const port = 3000;
+const express = require('express')
+const app = express()
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World\n');
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
 });
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+app.get("/config", (req, res, next) => {
+ res.json(["Tony","Lisa","Michael","Ginger","Food"]);
 });
+
+server.createServer(app).listen(port, hostname);
